@@ -1,0 +1,32 @@
+Rock papers Scissors CSS notes
+.container{
+	display: flex;
+	margin:0px;
+	justify-content: center;
+	align-items:center.; 
+}
+
+.img1st , .img2nd{
+    height:200px;
+    width:200px;
+    border:0.2px dashed #4B0082;
+    background-color: #ff7f00;
+    border-radius: 10px;
+}
+
+#reset{
+	align-items:center;
+	padding: 2.5px;
+	border-radius: 8px;
+	height:50px;
+	width:80px;
+	background-color: green;
+	color:white;
+	font-style: "Sans Serif";
+	margin-top: 80px
+}
+.para4{
+	color:#854d34;
+	font-size: 30px;
+	font-style: "Times New Roman";
+}
