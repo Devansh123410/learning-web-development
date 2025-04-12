@@ -1,0 +1,149 @@
+Rock, Papers and scissors
+<DOCTYPE html!>
+<html>
+<head>
+	<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width initial-scale=1.0">
+<title>this is the html file</title>
+	<link rel="stylesheet" type="text/CSS" href="project.css">
+	</head>
+<body>
+<center><h1>Rock,Paper,Scissors!!</h1></center>
+<div class="container">
+<span>
+<span class ="img1">
+	<img class="img1st" src="" alt="Please click the button.">
+	<button> click me</button>
+	<p class ="para1"></p>
+	<span id="userScore"></span>
+</span>
+</span>
+<span>
+<span class ="img2">
+	<img class="img2nd" src="" alt="Please click the button.">
+	<button>click me</button>
+<p class="para2"></p>
+<span id="userScore2"></span>
+</span></span>
+ </div>
+ <center>
+ 	<button id="reset">Reset Game</button>
+ </center>
+ <center>
+ 	<p class="para3"></p>
+ <p class="para4"></p>
+</center>
+</body>	
+<script type="text/javascript">
+span1=document.body.querySelector(".img1");
+span2=document.body.querySelector(".img2");
+let imgTag=document.querySelector(".img1st");
+let imgTag2=document.querySelector(".img2nd");
+// paper
+let imgURL1="https://media.geeksforgeeks.org/wp-content/uploads/20210705223645/paper.jpeg";
+// rock
+let imgURL2="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqVl38thND25wD3SwxDLlb6BynBTF31ALW0DghVUg_yA&s";
+// Scissors
+let imgURL3="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqgZ_K4oLk0mZ3QCK76o_cwHuewOgG7w8rNGHdqEi1xQ&s";
+let array=[imgURL1,imgURL2,imgURL3];
+span1.addEventListener("click",()=>{
+   if (!attemptsMade()) return;
+    imgTag.src= array[Math.floor(Math.random()*array.length)];
+    load();
+    });
+span2.addEventListener("click",()=>{
+  if (!attemptsMade()) return;
+	 imgTag2.src= array[Math.floor(Math.random()*array.length)];
+	 load();
+})
+let para1=document.querySelector(".para1");
+let para2=document.querySelector(".para2");
+let userScore=document.querySelector("#userScore");
+let userScore2=document.querySelector("#userScore2");
+let count1=0;
+let count2=0;
+
+function load(){
+	if ((imgTag.src===imgURL1 && imgTag2.src===imgURL2)||
+		(imgTag.src===imgURL3 && imgTag2.src===imgURL1) ||
+		 (imgTag.src===imgURL2 && imgTag2.src===imgURL3))
+	{
+    para1.innerText = "Player 1 Wins";
+    para1.style.color="green";
+    para1.style.fontSize="20px";
+    para2.innerText="Player 2 loses";
+     para2.style.color="red";
+      para2.style.fontSize="20px";
+    count1++;
+    userScore.innerText=count1;
+    userScore.style.fontSize="17.5px";
+    userScore2.innerText=count2;
+    userScore2.style.fontSize="17.5px";
+	} else if
+	 ((imgTag2.src===imgURL2 && imgTag.src===imgURL3)||
+	 	(imgTag2.src===imgURL3 && imgTag.src===imgURL1)||
+	 	(imgTag2.src===imgURL1 && imgTag.src===imgURL2)){
+	 	para2.innerText="Player 2 Wins";
+	 	 para2.style.color="green";
+	 	  para2.style.fontSize="20px";
+	 	para1.innerText="Player 1 loses";
+	 	 para1.style.color="red";
+	 	  para1.style.fontSize="20px";
+	 	count2++;
+       userScore2.innerText= count2;
+  userScore2.style.fontSize="17.5px";
+       userScore.innerText=count1;
+       userScore.style.fontSize="17.5px";
+	 }
+	else if ((imgTag2.src===imgTag.src)){
+ para1.innerText="It's a tie!!";
+ para2.innerText="It's a tie!!";
+}
+else{
+	 para1.innerText="";
+ para2.innerText="";
+}
+};
+let reset=document.querySelector("#reset");
+
+reset.addEventListener("click",()=>{
+       imgTag.src="";
+       imgTag2.src="";
+       para1.innerText="";
+       para2.innerText="";
+       count1="";
+       count2=""; 
+       userScore.innerText=count1;
+       userScore2.innerText=count2;
+       para3.innerText="";
+       win.innerText="";
+       attempts=0;
+});
+let para3=document.querySelector(".para3");
+let attempts=0;
+function attemptsMade(){
+	if (attempts >= 5){
+		para3.innerText="please reset the game by clicking reset button.";
+		para3.style.color="blue";
+		Winner();
+		return false;
+		
+	}
+	attempts++;
+	return true;
+};
+const win=document.querySelector(".para4");
+function Winner(){
+ let score=parseInt(userScore.innerText);
+ let score2=parseInt(userScore2.innerText);
+	if (score===score2){
+    win.innerText="No one wins.";
+	} else if(score>score2){
+		win.innerText="Player 1 wins.";
+	} else{
+      win.innerText="Player 2 wins.";
+	}
+	return ;
+};
+</script>
+</html>
